@@ -58,34 +58,3 @@ echo "Jenkins installation complete. You can access Jenkins at http://your_serve
 
 
 #############################uther######################################
-
-
-sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
-  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
-  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-  /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt-get update
-sudo apt install openjdk-11-jdk -y
-sudo apt install net-tools -y
-sudo apt-get install jenkins
-
-
-# Start and enable Jenkins
-echo "Starting Jenkins..."
-sudo systemctl start jenkins
-sudo systemctl enable jenkins
-
-# Check the status of Jenkins
-echo "Checking the status of Jenkins..."
-sudo systemctl status jenkins
-
-# Retrieve the initial admin password
-echo "Retrieving the initial admin password..."
-echo "Initial Admin Password:"
-cat /var/lib/jenkins/secrets/initialAdminPassword
-
-# Access Jenkins
-echo "Jenkins installation complete. You can access Jenkins at http://your_server_ip:8080"
-
-
